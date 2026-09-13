@@ -1,0 +1,89 @@
+@prefix : <http://example.org/lab.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# ---------- CLASSES ----------
+:Equipment      a owl:Class .
+:Student        a owl:Class .
+:Certification  a owl:Class .
+:Reservation    a owl:Class .
+
+# ---------- PROPERTIES ----------
+:requiresCertification a owl:ObjectProperty .
+:hasCertification      a owl:ObjectProperty .
+:isAvailable           a owl:DatatypeProperty .
+:underMaintenance      a owl:DatatypeProperty .
+:maxDurationHours      a owl:DatatypeProperty .
+:reserves              a owl:ObjectProperty .
+:reservedBy            a owl:ObjectProperty .
+:timeSlot              a owl:DatatypeProperty .
+
+# ---------- CERTIFICATIONS ----------
+:LaserSafety    a :Certification .
+:ChemSafety     a :Certification .
+:ElectricalSafety a :Certification .
+
+# ---------- STUDENTS ----------
+:Student1 :hasCertification :LaserSafety .
+:Student2 :hasCertification :ChemSafety .
+:Student3 :hasCertification :ElectricalSafety .
+:Student4 :hasCertification :LaserSafety .
+:Student5 :hasCertification :ChemSafety .
+
+# ---------- EQUIPMENT ----------
+:LaserCutter1 a :Equipment ;
+    :isAvailable true ;
+    :underMaintenance false ;
+    :requiresCertification :LaserSafety ;
+    :maxDurationHours 3 .
+
+:Microscope1 a :Equipment ;
+    :isAvailable true ;
+    :underMaintenance false ;
+    :maxDurationHours 2 .
+
+:ChemAnalyzer1 a :Equipment ;
+    :isAvailable true ;
+    :underMaintenance false ;
+    :requiresCertification :ChemSafety ;
+    :maxDurationHours 4 .
+
+:Oscilloscope1 a :Equipment ;
+    :isAvailable true ;
+    :underMaintenance false ;
+    :requiresCertification :ElectricalSafety ;
+    :maxDurationHours 2 .
+
+:3DPrinter1 a :Equipment ;
+    :isAvailable true ;
+    :underMaintenance true ;
+    :maxDurationHours 6 .
+
+:Centrifuge1 a :Equipment ;
+    :isAvailable true ;
+    :underMaintenance false ;
+    :requiresCertification :ChemSafety ;
+    :maxDurationHours 2 .
+
+:Spectrometer1 a :Equipment ;
+    :isAvailable true ;
+    :underMaintenance false ;
+    :maxDurationHours 3 .
+
+:PCRMachine1 a :Equipment ;
+    :isAvailable true ;
+    :underMaintenance false ;
+    :requiresCertification :ChemSafety ;
+    :maxDurationHours 5 .
+
+:Microscope2 a :Equipment ;
+    :isAvailable true ;
+    :underMaintenance false ;
+    :maxDurationHours 2 .
+
+:RoboticArm1 a :Equipment ;
+    :isAvailable true ;
+    :underMaintenance false ;
+    :requiresCertification :ElectricalSafety ;
+    :maxDurationHours 4 .
